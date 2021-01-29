@@ -79,11 +79,31 @@ func applyCombineLatest() {
     publisherA.send(2)
     publisherB.send(true)
     publisherB.send(false)
+}
 
+func applyZip() {
+    let publisherA = PassthroughSubject<Int, Never>()
+    let publisherB = PassthroughSubject<Bool, Never>()
+    
+    publisherA.zip(publisherB).sink {
+        print("P1: \($0) | P2: \($1)")
+    }
+    
+    publisherA.send(1)
+    publisherA.send(2)
+    publisherA.send(3)
+    
+    publisherB.send(true)
+    publisherB.send(false)
+    publisherB.send(true)
+    
+    publisherB.send(false) // Will be ignored until publisherA send its fourth value;
+//    publisherA.send(4) //uncomment this line to consider the line above and print P1: 4 | P2: false
 }
 
 //applyPrepend()
 //applyAppend()
 //applySwitchToLatest()
 //applyMerge()
-applyCombineLatest()
+//applyCombineLatest()
+applyZip()
