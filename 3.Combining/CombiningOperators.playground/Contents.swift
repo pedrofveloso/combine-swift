@@ -49,6 +49,23 @@ func applySwitchToLatest() {
     
 }
 
+func applyMerge() {
+    let publisher1 = PassthroughSubject<Int, Never>()
+    let publisher2 = PassthroughSubject<Int, Never>()
+    
+    publisher1.merge(with: publisher2).sink {
+        print($0)
+    }
+    
+    publisher1.send(0)
+    publisher2.send(1)
+    publisher2.send(2)
+    publisher2.send(3)
+    publisher1.send(3) // Contrary to what I thought (expected) the number "3" will be printed twice.
+                       // So this merge is actually a concatenation.
+}
+
 //applyPrepend()
 //applyAppend()
-applySwitchToLatest()
+//applySwitchToLatest()
+applyMerge()
