@@ -65,7 +65,25 @@ func applyMerge() {
                        // So this merge is actually a concatenation.
 }
 
+func applyCombineLatest() {
+    let publisherA = PassthroughSubject<Int, Never>()
+    let publisherB = PassthroughSubject<Bool, Never>()
+    
+    publisherA.combineLatest(publisherB).sink { combinedObject in
+        print("Publisher A: \(combinedObject.0) | Publisher B: \(combinedObject.1)")
+    }
+    
+    publisherA.send(0)
+    publisherB.send(false)
+    publisherA.send(1)
+    publisherA.send(2)
+    publisherB.send(true)
+    publisherB.send(false)
+
+}
+
 //applyPrepend()
 //applyAppend()
 //applySwitchToLatest()
-applyMerge()
+//applyMerge()
+applyCombineLatest()
