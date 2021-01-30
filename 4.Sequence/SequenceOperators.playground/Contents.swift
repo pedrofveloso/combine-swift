@@ -45,5 +45,37 @@ func applyFirstAndLast() {
         }
 }
 
+func applyOutput() {
+    let publisher = [1, 2, 3, 4, 5].publisher
+    
+    print("Output at")
+    publisher
+        .output(at: 3)
+        .sink {
+        print("Output at index 3 is:", $0)
+    }
+    
+    publisher
+        .output(at: 6)
+        .sink {
+            print("Output at index 6 is:", $0) //Unreachable code because the sequence has only 5 elements.
+        }
+    
+    print("Output in")
+    publisher
+        .output(in: (0...2))
+        .sink {
+            print("Outputs from index 0 to 2 are:", $0)
+        }
+    
+    print("Output in")
+    publisher
+        .output(in: (0...10))
+        .sink {
+            print("Outputs from index 0 to 4 are:", $0) //It will print all the elements because the range is greater than the sequence lenght
+        }
+}
+
 //applyMinAndMax()
-applyFirstAndLast()
+//applyFirstAndLast()
+applyOutput()
