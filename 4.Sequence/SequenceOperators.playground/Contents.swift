@@ -97,7 +97,29 @@ func applyCount() {
                                            //So you need to send a completion event to make count works.
 }
 
+func applyContains() {
+    let publisher = [0, 1, 2, 3].publisher
+    publisher
+        .contains(3)
+        .sink {
+            print("Is it contains the number 3?", $0)
+        }
+    
+    publisher
+        .contains(9)
+        .sink {
+            print("Is it contains the number 9?", $0)
+        }
+    
+    publisher
+        .contains(where: { $0 % 2 == 0 })
+        .sink {
+            print("Is it contains an even number?", $0)
+        }
+}
+
 //applyMinAndMax()
 //applyFirstAndLast()
 //applyOutput()
-applyCount()
+//applyCount()
+applyContains()
