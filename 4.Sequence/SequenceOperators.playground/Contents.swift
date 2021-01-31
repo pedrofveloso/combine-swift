@@ -76,6 +76,28 @@ func applyOutput() {
         }
 }
 
+func applyCount() {
+    let publisher = ["P", "E", "D", "R", "O"].publisher
+    publisher
+        .count()
+        .sink {
+            print("Number of elements in sequence:", $0)
+        }
+    
+    let publisher1 = PassthroughSubject<Int, Never>()
+    publisher1
+        .count()
+        .sink {
+            print("Number of elements passed through:", $0) //In order to make this code reachable you must uncomment the line 96
+        }
+    
+    publisher1.send(0)
+    publisher1.send(1)
+//    publisher1.send(completion: .finished) //Why you need to uncomment this line? The count method works only on publishers already finish its streams.
+                                           //So you need to send a completion event to make count works.
+}
+
 //applyMinAndMax()
 //applyFirstAndLast()
-applyOutput()
+//applyOutput()
+applyCount()
