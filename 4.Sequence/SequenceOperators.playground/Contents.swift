@@ -118,8 +118,25 @@ func applyContains() {
         }
 }
 
+func applyAllSatisfy() {
+    let publisher = (0...10).publisher // 0,1,2,3,4,5,6,7,8,9,10
+    
+    publisher
+        .allSatisfy { $0 < 11 }
+        .sink {
+            print("Is all numbers less than 11? | Answer:", $0)
+        }
+    
+    publisher
+        .allSatisfy { $0 % 2 != 0 }
+        .sink {
+            print("Is all odd numbers? | Answer:", $0)
+        }
+}
+
 //applyMinAndMax()
 //applyFirstAndLast()
 //applyOutput()
 //applyCount()
-applyContains()
+//applyContains()
+applyAllSatisfy()
