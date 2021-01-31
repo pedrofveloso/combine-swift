@@ -134,9 +134,23 @@ func applyAllSatisfy() {
         }
 }
 
+func applyReduce() {
+    let publisher = (0...5).publisher
+    
+    publisher
+        .reduce(0) { total, current in
+            print("total is \(total) and current is \(current)")
+            return total + current
+        }
+        .sink {
+            print("result:", $0)
+        }
+}
+
 //applyMinAndMax()
 //applyFirstAndLast()
 //applyOutput()
 //applyCount()
 //applyContains()
-applyAllSatisfy()
+//applyAllSatisfy()
+applyReduce()

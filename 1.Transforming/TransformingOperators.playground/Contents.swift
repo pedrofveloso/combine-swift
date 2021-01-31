@@ -107,4 +107,4 @@ func applyScan() {
 //applyReplaceNil()
 //unwrapChallenge()
 //applyReplaceEmpty()
-//applyScan()
+applyScan()
