@@ -15,6 +15,9 @@ struct Worker {
             fatalError("Invalid URL")
         }
         
+        
+        // It's simple to remind:
+        // Map, decode, receive and encapsulate as any publisher
         return URLSession.shared.dataTaskPublisher(for: url).map { result in
             result.data //or just $0.data
         }
@@ -38,8 +41,8 @@ class TableViewController : UITableViewController {
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "TableViewCell")
         
         cancellable = worker.fetchPosts()
-            .catch { _ in Just([Post]()) }
-            .assign(to: \.posts, on: self)
+            .catch { _ in Just(self.posts) } //when fails update with the current value of posts
+            .assign(to: \.posts, on: self) //when succeeded assign to the property 'posts' available in the 'self' scope.
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
