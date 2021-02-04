@@ -2,6 +2,7 @@ import UIKit
 import Combine
 
 var cancellable: Cancellable?
+var anyCancellable: AnyCancellable?
 
 func useRunLoops() {
     let runLoop = RunLoop.main
@@ -22,7 +23,7 @@ func useTimers() {
     let unit = TimeInterval(2)
     let subscription = Timer.publish(every: unit, on: .main, in: .common).autoconnect()
     
-    cancellable = subscription
+    anyCancellable = subscription
         .scan(0) { current, _ in
                 current + unit}
         .sink {
@@ -30,5 +31,22 @@ func useTimers() {
     }
 }
 
+func useDispatchQueue() {
+    let queue = DispatchQueue.main
+    let publisher = PassthroughSubject<Int, Never>()
+    var count = 0
+    
+    cancellable = queue.schedule(after: queue.now,
+                   interval: .seconds(1.0)) {
+        publisher.send(count)
+        count += 1
+    }
+    
+    anyCancellable = publisher.sink {
+        print($0)
+    }
+}
+
 //useRunLoops()
-useTimers()
+//useTimers()
+useDispatchQueue()
