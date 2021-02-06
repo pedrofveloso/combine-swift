@@ -11,7 +11,7 @@ import Combine
 class WeatherService {
     
     func fetch(for city: String) -> AnyPublisher<Weather, Error> {
-        guard let url = URL(string: "http://api.openweathermap.org/data/2.5/weather?q=Recife&units=metric&APPID=98863c21436097f1d1db2fe60a87daff") else {
+        guard let url = URL(string: "http://api.openweathermap.org/data/2.5/weather?q=\(city)&units=metric&APPID=98863c21436097f1d1db2fe60a87daff") else {
             return PassthroughSubject<Weather, Error>().eraseToAnyPublisher()
         }
         

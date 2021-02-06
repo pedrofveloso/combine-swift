@@ -16,22 +16,33 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1qE-Y2-CX6">
-                                <rect key="frame" x="48" y="453" width="318" height="0.0"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="gSU-ZP-Hur">
+                                <rect key="frame" x="48" y="402" width="318" height="92"/>
+                                <subviews>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="1Ml-XD-PPl">
+                                        <rect key="frame" x="0.0" y="0.0" width="318" height="34"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1qE-Y2-CX6">
+                                        <rect key="frame" x="0.0" y="42" width="318" height="50"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                            </stackView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="1qE-Y2-CX6" secondAttribute="trailing" constant="48" id="BQo-X4-wPW"/>
-                            <constraint firstItem="1qE-Y2-CX6" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="48" id="dOz-F4-d6e"/>
-                            <constraint firstItem="1qE-Y2-CX6" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerYWithinMargins" id="ffh-Bv-dJH"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="gSU-ZP-Hur" secondAttribute="trailing" constant="48" id="QLi-db-irI"/>
+                            <constraint firstItem="gSU-ZP-Hur" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="48" id="SUl-i9-A40"/>
+                            <constraint firstItem="gSU-ZP-Hur" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="rG7-Rf-rdQ"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="cityTextField" destination="1Ml-XD-PPl" id="qjf-dl-i78"/>
                         <outlet property="temperatureLabel" destination="1qE-Y2-CX6" id="lqa-Rd-PNu"/>
                     </connections>
                 </viewController>
