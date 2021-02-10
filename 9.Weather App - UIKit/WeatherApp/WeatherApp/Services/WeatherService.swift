@@ -9,9 +9,14 @@ import Foundation
 import Combine
 
 class WeatherService {
+    private var appID: String?
     
     func fetch(for city: String) -> AnyPublisher<Weather, Error> {
-        guard let url = URL(string: "http://api.openweathermap.org/data/2.5/weather?q=\(city)&units=metric&APPID=98863c21436097f1d1db2fe60a87daff") else {
+        guard let appID = appID else {
+            fatalError("Add your key from openweathermap; If you don't have one, sign up for free at openweathermap.org")
+        }
+        
+        guard let url = URL(string: "http://api.openweathermap.org/data/2.5/weather?q=\(city)&units=metric&APPID=\(appID)") else {
             return PassthroughSubject<Weather, Error>().eraseToAnyPublisher()
         }
         
