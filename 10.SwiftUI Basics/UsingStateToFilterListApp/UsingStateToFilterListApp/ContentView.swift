@@ -18,6 +18,7 @@ struct ContentView: View {
         List {
             Toggle(isOn: $isExpired, label: {
                 Text("Expired")
+                    .font(.title2)
             })
             .toggleStyle(SwitchToggleStyle(tint: .red))
             
