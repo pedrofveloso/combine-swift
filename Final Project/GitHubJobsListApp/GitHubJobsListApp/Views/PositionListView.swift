@@ -14,7 +14,7 @@ struct PositionListView: View {
     init() {
         let coloredNavAppearance = UINavigationBarAppearance()
         coloredNavAppearance.configureWithOpaqueBackground()
-        coloredNavAppearance.backgroundColor = .systemIndigo
+        coloredNavAppearance.backgroundColor = .systemOrange
 
         UINavigationBar.appearance().standardAppearance = coloredNavAppearance
         UINavigationBar.appearance().scrollEdgeAppearance = coloredNavAppearance
@@ -26,19 +26,23 @@ struct PositionListView: View {
     
             List(viewModel.positions, id: \.id) { position in
 
-                HStack {
-                    VStack(alignment: .leading) {
-                        Text(position.title)
-                            .font(.title2)
-                        
-                        Text(position.company)
-                            .font(.body)
-                        
-                        Text("\(position.type) - \(position.location)")
-                            .font(.callout)
-                            .foregroundColor(.secondary)
+               NavigationLink(
+                destination: PositionDetailView(position: position),
+                label: {
+                    HStack {
+                        VStack(alignment: .leading) {
+                            Text(position.title)
+                                .font(.title2)
+                            
+                            Text(position.company)
+                                .font(.body)
+                            
+                            Text("\(position.type) - \(position.location)")
+                                .font(.callout)
+                                .foregroundColor(.secondary)
+                        }
                     }
-                }
+                })
 
             }
             .navigationTitle("GitHub Jobs")

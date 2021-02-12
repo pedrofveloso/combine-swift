@@ -8,5 +8,5 @@
 import Foundation
 
 struct Position: Decodable {
-    let id, title, company, location, type: String
+    let id, title, company, location, type, description: String
 }
