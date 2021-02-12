@@ -15,6 +15,7 @@
 		DF4BFAB825D5F5DC00755292 /* PositionListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF4BFAB725D5F5DC00755292 /* PositionListViewModel.swift */; };
 		DF4BFABE25D5F7B800755292 /* PositionListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF4BFABD25D5F7B800755292 /* PositionListView.swift */; };
 		DF4BFAC225D61FBB00755292 /* PositionDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF4BFAC125D61FBB00755292 /* PositionDetailView.swift */; };
+		DF4BFAC525D6C11900755292 /* Webview.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF4BFAC425D6C11900755292 /* Webview.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +29,7 @@
 		DF4BFAB725D5F5DC00755292 /* PositionListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PositionListViewModel.swift; sourceTree = "<group>"; };
 		DF4BFABD25D5F7B800755292 /* PositionListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PositionListView.swift; sourceTree = "<group>"; };
 		DF4BFAC125D61FBB00755292 /* PositionDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PositionDetailView.swift; sourceTree = "<group>"; };
+		DF4BFAC425D6C11900755292 /* Webview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Webview.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -109,6 +111,7 @@
 			children = (
 				DF4BFABD25D5F7B800755292 /* PositionListView.swift */,
 				DF4BFAC125D61FBB00755292 /* PositionDetailView.swift */,
+				DF4BFAC425D6C11900755292 /* Webview.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -187,6 +190,7 @@
 				DF4BFAB825D5F5DC00755292 /* PositionListViewModel.swift in Sources */,
 				DF4BFA9C25D5F06600755292 /* GitHubJobsListApp.swift in Sources */,
 				DF4BFAB325D5F19700755292 /* Position.swift in Sources */,
+				DF4BFAC525D6C11900755292 /* Webview.swift in Sources */,
 				DF4BFABE25D5F7B800755292 /* PositionListView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

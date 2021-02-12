@@ -12,15 +12,10 @@ struct PositionDetailView: View {
     var position: Position
     
     var body: some View {
-        ScrollView {
-            
-            VStack (alignment: .leading, spacing: 16) {
-                Text(position.description)
-                    .font(.body)
-                    .multilineTextAlignment(.leading)
-            }
-            .navigationTitle(position.title)
-        }
+        Webview(content: position.description)
+            .padding(.horizontal, 16)
+            .navigationBarTitle(position.title,
+                                displayMode: .inline)
     }
 }
 
@@ -31,6 +26,6 @@ struct PositionDetailView_Previews: PreviewProvider {
                                               company: "Company",
                                               location: "Location",
                                               type: "Type",
-                                              description: "Description"))
+                                              description: "<header><meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no'></header><h1> Description </h1>"))
     }
 }
