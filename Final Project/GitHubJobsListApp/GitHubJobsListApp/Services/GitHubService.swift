@@ -20,8 +20,19 @@ final class GitHubService {
         }
         
         return URLSession.shared.dataTaskPublisher(for: url)
-            .map { $0.data }
+            .map(\.data)
             .decode(type: [Position].self, decoder: JSONDecoder())
+            .receive(on: RunLoop.main)
+            .eraseToAnyPublisher()
+    }
+    
+    func fetchImage(with urlString: String) -> AnyPublisher<Data, URLError> {
+        guard let url = URL(string: urlString) else {
+            return Fail(error: URLError(.badURL)).eraseToAnyPublisher()
+        }
+        
+        return URLSession.shared.dataTaskPublisher(for: url)
+            .map(\.data)
             .receive(on: RunLoop.main)
             .eraseToAnyPublisher()
     }

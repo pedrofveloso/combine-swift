@@ -9,4 +9,7 @@ import Foundation
 
 struct Position: Decodable {
     let id, title, company, location, type, description: String
+    let company_logo: String?
+    
+    var imageData: Data?
 }

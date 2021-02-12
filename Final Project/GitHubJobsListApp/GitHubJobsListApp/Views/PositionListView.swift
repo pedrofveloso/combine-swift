@@ -24,29 +24,35 @@ struct PositionListView: View {
     var body: some View {
         NavigationView {
     
-            List(viewModel.positions, id: \.id) { position in
+            List(viewModel.positions, id: \.id) { positionViewModel in
 
                NavigationLink(
-                destination: PositionDetailView(position: position),
-                label: {
+                destination: PositionDetailView(position: positionViewModel)) {
                     HStack {
+                        
+                        Image(uiImage: viewModel.fetchImage(for: positionViewModel.position))
+                            .resizable()
+                            .frame(width: 50, height: 50)
+                            .aspectRatio(contentMode: .fit)
+                        
                         VStack(alignment: .leading) {
-                            Text(position.title)
+                            Text(positionViewModel.title)
                                 .font(.title2)
                             
-                            Text(position.company)
+                            Text(positionViewModel.company)
                                 .font(.body)
                             
-                            Text("\(position.type) - \(position.location)")
+                            Text(positionViewModel.locationAndType)
                                 .font(.callout)
                                 .foregroundColor(.secondary)
                         }
                     }
-                })
+                }
 
             }
             .navigationTitle("GitHub Jobs")
         }
+        .accentColor(.white)
         .onAppear {
             viewModel.fetchPositions()
         }
